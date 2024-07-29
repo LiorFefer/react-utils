@@ -16,9 +16,9 @@ export const createGlobalState = <T>(initialValue: T) => {
     const [_state, _setState] = useState(true);
 
     const setState = (newState: T) => {
+      state = newState;
       observers.forEach((observer) => {
         observer.notify(!_state);
-        state = newState;
       });
     };
 
